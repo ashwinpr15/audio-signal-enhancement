@@ -35,7 +35,6 @@ Higher SNR confirms effective noise suppression.
 
 ---
 
-## 📁 Repository Structure
 
 ## 📂 Repository Structure
 * `src/model.py`: Convolutional Encoder-Decoder architecture.
