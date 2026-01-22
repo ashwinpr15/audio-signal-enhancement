@@ -36,7 +36,7 @@ Higher SNR confirms effective noise suppression.
 ---
 
 
-## 📂 Repository Structure
+## 📂 Repository Structure 📂
 * `src/model.py`: Convolutional Encoder-Decoder architecture.
 * `src/data_loader.py`: Synthetic data generator (simulating spectrograms).
 * `train.py`: Model training loop.
