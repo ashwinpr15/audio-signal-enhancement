@@ -1,7 +1,7 @@
 import os
+import matplotlib.pyplot as plt
 from src.model import build_denoising_autoencoder
 from src.data_loader import generate_synthetic_data
-import matplotlib.pyplot as plt
 
 # 1. Settings
 IMG_SHAPE = (128, 128, 1)
@@ -35,6 +35,8 @@ autoencoder.save('models/denoiser_model.h5')
 print("Model saved to models/denoiser_model.h5")
 
 # 6. Save Training History Plot
+if not os.path.exists('output'):
+    os.makedirs('output')
 plt.plot(history.history['loss'], label='Train Loss')
 plt.plot(history.history['val_loss'], label='Val Loss')
 plt.legend()
