@@ -6,7 +6,7 @@
 
 ---
 
-## 📌 Overview
+##  Overview
 This project implements a **Denoising Autoencoder (DAE)** to enhance noisy audio signals.  
 Audio data is represented as **spectrogram-like matrices**, allowing convolutional neural networks to learn noise-robust signal representations.
 
@@ -14,7 +14,7 @@ The project mirrors real-world data science workflows where unstructured signals
 
 ---
 
-## 🧠 Methodology
+##  Methodology
 - Converted signal enhancement into a **supervised learning problem**
 - Used a **Convolutional Encoder–Decoder architecture**
 - Trained the model to reconstruct clean spectrograms from noisy inputs
@@ -22,7 +22,7 @@ The project mirrors real-world data science workflows where unstructured signals
 
 ---
 
-## 📊 Evaluation & Results
+##  Evaluation & Results
 Performance was validated using **Signal-to-Noise Ratio (SNR)**:
 
 | Metric | Average SNR |
