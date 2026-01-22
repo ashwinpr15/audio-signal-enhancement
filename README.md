@@ -5,41 +5,32 @@
 ![Status](https://img.shields.io/badge/Status-Completed-success?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square)
 
-A Convolutional Denoising Autoencoder (DAE) implemented in TensorFlow/Keras. This model removes additive Gaussian noise from unstructured audio data by learning robust feature representations in the time-frequency domain (spectrograms).
+A Convolutional Denoising Autoencoder (DAE) implemented using TensorFlow/Keras to suppress additive Gaussian noise from synthetic spectrogram-like audio representations.
 
 ## ⚡ Technical Overview
+This project addresses signal clarity enhancement using a supervised deep learning approach. Instead of traditional DSP-based filters, a **convolutional encoder–decoder architecture** is trained to reconstruct clean time–frequency representations from noisy inputs.
 
-This project tackles signal clarity enhancement using a supervised deep learning approach. Instead of traditional DSP filters, it uses a **Convolutional Encoder-Decoder** architecture to map noisy inputs to clean targets.
-
-* **Input:** 128x128 Log-Mel Spectrograms (simulated) + Gaussian Noise.
-* **Model:** 4-layer CNN Autoencoder with downsampling (Encoder) and upsampling (Decoder).
-* **Loss Function:** Mean Squared Error (MSE) for pixel-wise reconstruction.
-* **Metric:** Signal-to-Noise Ratio (SNR) for signal clarity benchmarking.
+* **Input:** 128×128 synthetic spectrogram-like matrices with additive Gaussian noise
+* **Model:** Convolutional Autoencoder with downsampling (encoder) and upsampling (decoder)
+* **Loss Function:** Mean Squared Error (MSE) for reconstruction fidelity
+* **Evaluation Metric:** Signal-to-Noise Ratio (SNR)
 
 ## 📊 Performance Benchmarks
+Statistical evaluation was conducted using Signal-to-Noise Ratio (SNR) to quantify signal enhancement quality.
 
-Statistical analysis was performed on the test set to quantify signal recovery.
-
-| Metric | Input (Noisy) | Output (Denoised) | Improvement |
+| Metric | Noisy Input | Denoised Output | Improvement |
 | :--- | :--- | :--- | :--- |
 | **Average SNR** | ~2.5 dB | ~14.2 dB | **+11.7 dB** |
-| **MSE Loss** | 0.045 | 0.008 | **-82%** |
 
-*> **Note:** Higher SNR (Signal-to-Noise Ratio) indicates better signal clarity and reduced background interference.*
+*> **Note:** Higher SNR values indicate improved signal clarity and reduced background noise.*
 
 ## 📂 Repository Structure
-
 ```text
 .
 ├── src/
-│   ├── model.py         # CNN Autoencoder architecture (Keras)
-│   ├── data_loader.py   # Synthetic spectrogram generator (NumPy)
-├── train.py             # Training pipeline and model checkpointing
-├── analyze.py           # Statistical evaluation (SNR calculation)
+│   ├── model.py         # CNN autoencoder architecture (Keras)
+│   ├── data_loader.py   # Synthetic spectrogram generator
+├── train.py             # Training pipeline
+├── analyze.py           # Statistical evaluation (SNR)
 ├── requirements.txt     # Dependencies
 └── README.md            # Documentation
-
-
-
-
-
