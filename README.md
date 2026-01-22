@@ -1,21 +1,41 @@
 # Audio Signal Enhancement with Deep Learning
 
-**Project Status:** Completed  
-**Tech Stack:** Python, TensorFlow, NumPy, Matplotlib
+**Status:** Completed  
+**Domain:** Machine Learning, Signal Processing  
+**Tech Stack:** Python, TensorFlow (Keras), NumPy, Matplotlib
 
-## 📌 Executive Summary
-This project implements a **Denoising Autoencoder (DAE)** to improve signal clarity in unstructured audio data. It simulates the work performed during my time as a Data Science Analyst Intern, focusing on removing background noise from communication signals using Convolutional Neural Networks (CNNs).
+---
 
-## 🔍 Analysis & Results
-We evaluated the model using **Signal-to-Noise Ratio (SNR)** benchmarking to quantify the restoration quality.
+##  Overview
+This project implements a **Denoising Autoencoder (DAE)** to enhance noisy audio signals.  
+Audio data is represented as **spectrogram-like matrices**, allowing convolutional neural networks to learn noise-robust signal representations.
 
-| Metric | Average Value (dB) |
-| :--- | :--- |
-| Input Noisy Signal | ~2.5 dB |
-| **Enhanced Output** | **~14.2 dB** |
-| **Improvement** | **+11.7 dB** |
+The project mirrors real-world data science workflows where unstructured signals must be cleaned before downstream analytics.
 
-*(Higher dB indicates cleaner signal)*
+---
+
+##  Methodology
+- Converted signal enhancement into a **supervised learning problem**
+- Used a **Convolutional Encoder–Decoder architecture**
+- Trained the model to reconstruct clean spectrograms from noisy inputs
+- Generated synthetic signals to ensure reproducibility and fast execution
+
+---
+
+##  Evaluation & Results
+Performance was validated using **Signal-to-Noise Ratio (SNR)**:
+
+| Metric | Average SNR |
+|------|------------|
+| Noisy Input | ~2–3 dB |
+| **Denoised Output** | **~14 dB** |
+| **Net Improvement** | **+11 dB** |
+
+Higher SNR confirms effective noise suppression.
+
+---
+
+## 📁 Repository Structure
 
 ## 📂 Repository Structure
 * `src/model.py`: Convolutional Encoder-Decoder architecture.
