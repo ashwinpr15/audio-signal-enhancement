@@ -1,0 +1,8 @@
+{
+  "test_examples": 50,
+  "test_seed": 7,
+  "avg_input_snr_db": -0.72,
+  "avg_output_snr_db": 12.35,
+  "avg_improvement_db": 13.07,
+  "min_improvement_db": 3.99
+}
