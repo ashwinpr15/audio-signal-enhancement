@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
+  <img src="assets/banner-light.svg" alt="Synthetic signal denoising demonstration" width="100%">
+</picture>
+
 # Synthetic signal denoising demonstration
 
 A TensorFlow/Keras convolutional autoencoder reconstructs generated 128 by 128 line patterns after Gaussian noise is added. The inputs are synthetic spectrogram-like matrices, not recordings or transformed waveforms.
