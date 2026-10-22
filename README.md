@@ -1,36 +1,30 @@
-# Audio Denoising Autoencoder
+# Synthetic signal denoising demonstration
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange?style=flat-square)
-![Status](https://img.shields.io/badge/Status-Completed-success?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square)
+A TensorFlow/Keras convolutional autoencoder reconstructs generated 128 by 128 line patterns after Gaussian noise is added. The inputs are synthetic spectrogram-like matrices, not recordings or transformed waveforms.
 
-A Convolutional Denoising Autoencoder (DAE) implemented using TensorFlow/Keras to suppress additive Gaussian noise from synthetic spectrogram-like audio representations.
+## Implementation
 
-## ⚡ Technical Overview
-This project addresses signal clarity enhancement using a supervised deep learning approach. Instead of traditional DSP-based filters, a **convolutional encoder–decoder architecture** is trained to reconstruct clean time–frequency representations from noisy inputs.
+- `src/data_loader.py`: line-pattern generation, Gaussian noise, clipping, and channel dimensions.
+- `src/model.py`: two convolution/pooling stages followed by convolution/upsampling and a sigmoid output; MSE loss.
+- `train.py`: trains on 500 generated examples for 10 epochs with a 10% validation split; writes a model and loss plot.
+- `analyze.py`: generates 10 new examples, compares matrix SNR, and saves a reconstruction plot.
 
-* **Input:** 128×128 synthetic spectrogram-like matrices with additive Gaussian noise
-* **Model:** Convolutional Autoencoder with downsampling (encoder) and upsampling (decoder)
-* **Loss Function:** Mean Squared Error (MSE) for reconstruction fidelity
-* **Evaluation Metric:** Signal-to-Noise Ratio (SNR)
+## Run from the repository root
 
-## 📊 Performance Benchmarks
-Statistical evaluation was conducted using Signal-to-Noise Ratio (SNR) to quantify signal enhancement quality.
+```sh
+python -m venv .venv
+# Activate the environment for your operating system.
+python -m pip install -r requirements.txt
+python train.py
+python analyze.py
+```
 
-| Metric | Noisy Input | Denoised Output | Improvement |
-| :--- | :--- | :--- | :--- |
-| **Average SNR** | ~2.5 dB | ~14.2 dB | **+11.7 dB** |
+Outputs: `models/denoiser_model.h5`, `output/training_curve.png`, and `output/result_comparison.png`.
 
-*> **Note:** Higher SNR values indicate improved signal clarity and reduced background noise.*
+## Limitations
 
-## 📂 Repository Structure
-```text
-.
-├── src/
-│   ├── model.py         # CNN autoencoder architecture (Keras)
-│   ├── data_loader.py   # Synthetic spectrogram generator
-├── train.py             # Training pipeline
-├── analyze.py           # Statistical evaluation (SNR)
-├── requirements.txt     # Dependencies
-└── README.md            # Documentation
+No fixed benchmark result is published yet. To report one, run the scripts and retain the environment, seed, checkpoint, and evaluation data before publishing a result. The current generator has no explicit random seed; scores can vary. Matrix SNR is not evidence of perceptual audio quality, and this project does not demonstrate waveform reconstruction or production deployment.
+
+## License
+
+Released under the [MIT License](LICENSE).
