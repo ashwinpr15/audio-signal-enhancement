@@ -24,5 +24,7 @@ def build_denoising_autoencoder(input_shape):
     # Output layer (1 channel for grayscale spectrogram)
     model.add(layers.Conv2D(1, (3, 3), activation='sigmoid', padding='same'))
 
-    model.compile(optimizer='adam', loss='mean_squared_error')
+    # Binary cross-entropy instead of MSE: the clean targets are sparse 0/1 images (~4% signal),
+    # and with MSE the network settles on predicting an all-background image.
+    model.compile(optimizer='adam', loss='binary_crossentropy')
     return model
